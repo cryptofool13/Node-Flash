@@ -4,13 +4,13 @@ const greeting = require("./greeting");
 const cards = require("./cards");
 const cardViewer = require("./cardViewer");
 
+readline.emitKeypressEvents(process.stdin);
+process.stdin.setRawMode(true);
+
 function main() {
   greeting();
   let current = 0;
   let side = "front";
-
-  readline.emitKeypressEvents(process.stdin);
-  process.stdin.setRawMode(true);
 
   process.stdin.on("keypress", (str, key) => {
     if (key.ctrl && key.name === "c") {
@@ -34,21 +34,8 @@ function main() {
         console.clear();
         cardViewer(cards[current], side);
         break;
-
-      // default:
-      //   greeting();
     }
   });
 }
 
 main();
-
-// const stdin = process.stdin;
-// stdin.resume();
-// stdin.setEncoding("utf-8");
-// stdin.on("data", key => {
-//   if (key === "\u0003") {
-//     process.exit();
-//   }
-//   process.stdout.write(key);
-// });
