@@ -16,3 +16,4 @@ const cards = [
 module.exports = cards;
 
 // an array of objects each having a front and back property.
+// todo: wire up light-weight noSQL db
